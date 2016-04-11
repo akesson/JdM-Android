@@ -63,6 +63,8 @@ dependencies {
     compile "com.android.support:design:$supportVersion"
     compile "com.android.support:recyclerview-v7:$supportVersion"
 
+    compile 'com.firebase:firebase-client-android:2.5.2+'
+
     testCompile 'junit:junit:4.12'
 
     androidTestCompile "com.android.support:support-annotations:$supportVersion"
