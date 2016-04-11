@@ -10,8 +10,10 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="mobi.akesson.jdm.MainActivity">
 
-    <TextView
-        android:layout_width="wrap_content"
+    <EditText
+        android:id="@+id/firebase_textfield"
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:text="Hello Jeux!"/>
+        android:hint="@string/firebase_textfield_value"
+        android:inputType="text" />
 </RelativeLayout>
