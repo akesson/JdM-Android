@@ -16,4 +16,15 @@
         android:layout_height="wrap_content"
         android:hint="@string/firebase_textfield_value"
         android:inputType="text" />
+
+    <EditText
+        android:id="@+id/second_textfield"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/second_textfield_value"
+        android:inputType="text"
+        android:layout_below="@+id/firebase_textfield"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
 </RelativeLayout>
