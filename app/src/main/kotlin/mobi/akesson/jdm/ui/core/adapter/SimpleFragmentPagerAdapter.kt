@@ -15,14 +15,14 @@ class SimpleFragmentPagerAdapter(fm: FragmentManager) : FragmentPagerAdapter(fm)
         fragments = ArrayList<Fragment>()
     }
 
-    fun addFragment(title: String, fragment: Fragment) {
-        titles.add(title)
-        fragments.add(fragment)
-    }
-
-    fun addFragment(fragment: Fragment) {
-        titles.add("")
-        fragments.add(fragment)
+    fun addItem(index: Int = -1, title: String = "", fragment: Fragment) {
+        if (index == -1) {
+            titles.add(title)
+            fragments.add(fragment)
+        } else {
+            titles.add(index, title)
+            fragments.add(index, fragment)
+        }
     }
 
     override fun getItem(position: Int): Fragment {
