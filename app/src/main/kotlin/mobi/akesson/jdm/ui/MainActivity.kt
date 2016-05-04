@@ -1,7 +1,8 @@
-package mobi.akesson.jdm
+package mobi.akesson.jdm.ui
 
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
+import mobi.akesson.jdm.R
 import org.jetbrains.anko.*
 
 class MainActivity : AppCompatActivity() {
