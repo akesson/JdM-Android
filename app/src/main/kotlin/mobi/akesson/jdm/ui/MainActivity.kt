@@ -3,24 +3,26 @@ package mobi.akesson.jdm.ui
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import mobi.akesson.jdm.R
-import org.jetbrains.anko.*
+import mobi.akesson.jdm.ui.core.adapter.SimpleFragmentPagerAdapter
+import mobi.akesson.jdm.ui.core.fragment.DummyFragment
+import kotlinx.android.synthetic.main.activity_main.main_tabs as tabs
+import kotlinx.android.synthetic.main.activity_main.main_toolbar as toolbar
+import kotlinx.android.synthetic.main.activity_main.main_view_pager as viewPager
 
 class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        MainActivityUI().setContentView(this)
-    }
-}
+        setContentView(R.layout.activity_main)
 
-class MainActivityUI : AnkoComponent<MainActivity> {
+        setSupportActionBar(toolbar)
 
-    override fun createView(ui: AnkoContext<MainActivity>) = with(ui) {
-        relativeLayout {
-            horizontalPadding = dimen(R.dimen.activity_horizontal_margin)
-            verticalPadding = dimen(R.dimen.activity_vertical_margin)
+        val adapter = SimpleFragmentPagerAdapter(supportFragmentManager)
+        adapter.addFragment("Tables", DummyFragment())
+        adapter.addFragment("Jeux", DummyFragment())
+        adapter.addFragment("Profil", DummyFragment())
 
-            textView("Hello Jeux!")
-        }
+        viewPager.adapter = adapter
+        tabs.setupWithViewPager(viewPager)
     }
 }
