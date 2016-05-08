@@ -19,6 +19,16 @@
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
+
+        <activity
+            android:name=".ui.game.RegisterGameActivity"
+            android:label="@string/title_register_game"
+            android:parentActivityName=".ui.MainActivity"/>
+
+        <activity
+            android:name=".ui.table.RegisterTableActivity"
+            android:label="@string/title_register_table"
+            android:parentActivityName=".ui.MainActivity"/>
     </application>
 
 </manifest>

@@ -1,4 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+
     <string name="app_name">Jeux du midi</string>
+
+    <string name="title_register_table">Créer une table</string>
+
+    <string name="title_register_game">Ajouter un jeu</string>
+
 </resources>

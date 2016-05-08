@@ -6,10 +6,12 @@ import android.support.v7.app.AppCompatActivity
 import mobi.akesson.jdm.R
 import mobi.akesson.jdm.ui.core.adapter.SimpleFragmentPagerAdapter
 import mobi.akesson.jdm.ui.game.GameFragment
+import mobi.akesson.jdm.ui.game.RegisterGameActivity
 import mobi.akesson.jdm.ui.player.PlayerFragment
+import mobi.akesson.jdm.ui.table.RegisterTableActivity
 import mobi.akesson.jdm.ui.table.TableFragment
 import org.jetbrains.anko.onClick
-import org.jetbrains.anko.toast
+import org.jetbrains.anko.startActivity
 import kotlinx.android.synthetic.main.activity_main.main_fab as fab
 import kotlinx.android.synthetic.main.activity_main.main_tabs as tabs
 import kotlinx.android.synthetic.main.activity_main.main_toolbar as toolbar
@@ -47,8 +49,8 @@ class MainActivity : AppCompatActivity() {
 
         fab.onClick {
             when (viewPager.currentItem) {
-                TABLE_INDEX -> toast("fab table")
-                GAME_INDEX -> toast("fab game")
+                TABLE_INDEX -> startActivity<RegisterTableActivity>()
+                GAME_INDEX -> startActivity<RegisterGameActivity>()
             }
         }
     }
