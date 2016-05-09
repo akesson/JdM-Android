@@ -1,13 +1,15 @@
 package mobi.akesson.jdm.ui
 
 import android.os.Bundle
-import android.support.v4.view.ViewPager
 import android.support.v7.app.AppCompatActivity
 import mobi.akesson.jdm.R
+import mobi.akesson.jdm.extension.addOnPageChangeListener
+import mobi.akesson.jdm.extension.hide
 import mobi.akesson.jdm.ui.core.adapter.SimpleFragmentPagerAdapter
 import mobi.akesson.jdm.ui.game.GameFragment
 import mobi.akesson.jdm.ui.game.RegisterGameActivity
 import mobi.akesson.jdm.ui.player.PlayerFragment
+import mobi.akesson.jdm.ui.player.RegisterPlayerActivity
 import mobi.akesson.jdm.ui.table.RegisterTableActivity
 import mobi.akesson.jdm.ui.table.TableFragment
 import org.jetbrains.anko.onClick
@@ -37,13 +39,11 @@ class MainActivity : AppCompatActivity() {
         viewPager.adapter = adapter
         tabs.setupWithViewPager(viewPager)
 
-        viewPager.addOnPageChangeListener(object : ViewPager.SimpleOnPageChangeListener() {
-            override fun onPageSelected(position: Int) {
-                when (position) {
-                    TABLE_INDEX -> onTablePageSelected()
-                    GAME_INDEX -> onGamePageSelected()
-                    PLAYER_INDEX -> onPlayerPageSelected()
-                }
+        viewPager.addOnPageChangeListener(onPageSelected = { position ->
+            when (position) {
+                TABLE_INDEX -> onTablePageSelected()
+                GAME_INDEX -> onGamePageSelected()
+                PLAYER_INDEX -> onPlayerPageSelected()
             }
         })
 
@@ -51,19 +51,29 @@ class MainActivity : AppCompatActivity() {
             when (viewPager.currentItem) {
                 TABLE_INDEX -> startActivity<RegisterTableActivity>()
                 GAME_INDEX -> startActivity<RegisterGameActivity>()
+                PLAYER_INDEX -> startActivity<RegisterPlayerActivity>()
             }
         }
     }
 
     private fun onTablePageSelected() {
-        fab.show()
+        fab.hide(onHidden = { fab ->
+            fab.setImageResource(R.drawable.ic_add_white_24dp)
+            fab.show()
+        })
     }
 
     private fun onGamePageSelected() {
-        fab.show()
+        fab.hide(onHidden = { fab ->
+            fab.setImageResource(R.drawable.ic_add_white_24dp)
+            fab.show()
+        })
     }
 
     private fun onPlayerPageSelected() {
-        fab.hide()
+        fab.hide(onHidden = { fab ->
+            fab.setImageResource(R.drawable.ic_person_add_white_24dp)
+            fab.show()
+        })
     }
 }

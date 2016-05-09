@@ -29,6 +29,11 @@
             android:parentActivityName=".ui.MainActivity"/>
 
         <activity
+            android:name=".ui.player.RegisterPlayerActivity"
+            android:label="@string/title_register_player"
+            android:parentActivityName=".ui.MainActivity"/>
+
+        <activity
             android:name=".ui.table.RegisterTableActivity"
             android:label="@string/title_register_table"
             android:parentActivityName=".ui.MainActivity"/>

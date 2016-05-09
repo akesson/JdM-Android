@@ -3,8 +3,10 @@
 
     <string name="app_name">Jeux du midi</string>
 
-    <string name="title_register_table">Créer une table</string>
-
     <string name="title_register_game">Ajouter un jeu</string>
+
+    <string name="title_register_player">Profil</string>
+
+    <string name="title_register_table">Créer une table</string>
 
 </resources>
