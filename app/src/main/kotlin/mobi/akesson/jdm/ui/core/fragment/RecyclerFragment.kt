@@ -3,32 +3,54 @@ package mobi.akesson.jdm.ui.core.fragment
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v7.widget.RecyclerView
+import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
+import android.widget.ViewAnimator
 import mobi.akesson.jdm.R
-import org.jetbrains.anko.AnkoComponent
-import org.jetbrains.anko.AnkoContext
-import org.jetbrains.anko.dimen
+import org.jetbrains.anko.*
 import org.jetbrains.anko.recyclerview.v7.recyclerView
-import org.jetbrains.anko.verticalPadding
 
-open class RecyclerFragment : Fragment() {
+abstract class RecyclerFragment : Fragment() {
 
+    var viewAnimator: ViewAnimator? = null
     var recyclerView: RecyclerView? = null
+    var emptyTextView: TextView? = null
+    var loadingTextView: TextView? = null
 
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        recyclerView = RecyclerFragmentUI().createView(AnkoContext.create(context, this))
-        return recyclerView
+        viewAnimator = RecyclerFragmentUI().createView(AnkoContext.create(context, this))
+        recyclerView = viewAnimator?.getChildAt(RecyclerFragmentUI.POSITION_LIST) as RecyclerView;
+        loadingTextView = viewAnimator?.getChildAt(RecyclerFragmentUI.POSITION_LOADING) as TextView;
+        emptyTextView = viewAnimator?.getChildAt(RecyclerFragmentUI.POSITION_EMPTY) as TextView;
+        return viewAnimator
     }
 }
 
 class RecyclerFragmentUI : AnkoComponent<RecyclerFragment> {
 
+    companion object{
+        val POSITION_LIST = 0
+        val POSITION_LOADING = 1
+        val POSITION_EMPTY = 2
+    }
+
     override fun createView(ui: AnkoContext<RecyclerFragment>) = with(ui) {
-        recyclerView {
-            verticalPadding = dimen(R.dimen.padding_small)
-            clipToPadding = false
+        viewAnimator {
+            recyclerView {
+                verticalPadding = dimen(R.dimen.padding_small)
+                clipToPadding = false
+            }
+            textView {
+                gravity = Gravity.CENTER
+                textResource = R.string.loading
+            }
+            textView {
+                gravity = Gravity.CENTER
+                textResource = R.string.empty
+            }
         }
     }
 }

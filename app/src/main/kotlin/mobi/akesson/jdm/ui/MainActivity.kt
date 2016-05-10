@@ -72,7 +72,7 @@ class MainActivity : AppCompatActivity() {
 
     private fun onPlayerPageSelected() {
         fab.hide(onHidden = { fab ->
-            fab.setImageResource(R.drawable.ic_person_add_white_24dp)
+            fab.setImageResource(R.drawable.ic_edit_white_24dp)
             fab.show()
         })
     }

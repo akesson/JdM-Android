@@ -5,6 +5,11 @@
 
     <string name="validate">Valider</string>
     <string name="erase">Effacer</string>
+    <string name="loading">Chargement…</string>
+    <string name="empty">Vide :(</string>
+
+    <string name="games_empty">"Il n'y a aucun jeu pour l'instant :("</string>
+    <string name="tables_empty">"Il n'y a aucune table de pour l'instant :("</string>
 
     <string name="title_register_game">Nouveau jeu</string>
     <string name="discard_new_game">Supprimer le nouveau jeu ?</string>

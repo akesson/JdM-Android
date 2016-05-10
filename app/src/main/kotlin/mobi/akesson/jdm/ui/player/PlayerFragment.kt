@@ -13,14 +13,12 @@ import org.jetbrains.anko.support.v4.nestedScrollView
 
 class PlayerFragment : Fragment() {
 
-    val playerManager = PlayerManager()
-
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         return PlayerFragmentUI().createView(AnkoContext.create(context, this))
     }
 
     override fun onViewCreated(view: View?, savedInstanceState: Bundle?) {
-        playerManager.update(Player(id = "eritru", name = "Eric Truong"))
+
     }
 }
 
