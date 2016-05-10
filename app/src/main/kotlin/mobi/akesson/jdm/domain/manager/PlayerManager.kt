@@ -11,7 +11,10 @@ import mobi.akesson.jdm.domain.model.Table
 import org.jetbrains.anko.AnkoLogger
 import org.jetbrains.anko.debug
 
-class PlayerManager(val playerMapper: PlayerMapper = PlayerMapper(), val tableManager: TableManager = TableManager()) : BaseManager(), AnkoLogger {
+class PlayerManager(
+        val playerMapper: PlayerMapper = PlayerMapper(),
+        val tableManager: TableManager = TableManager()
+) : BaseManager(), AnkoLogger {
 
     fun create(id: String, player: Player) {
         val playerData = playerMapper.toData(player)

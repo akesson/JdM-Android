@@ -3,10 +3,16 @@
 
     <string name="app_name">Jeux du midi</string>
 
-    <string name="title_register_game">Ajouter un jeu</string>
+    <string name="validate">Valider</string>
+    <string name="erase">Effacer</string>
 
-    <string name="title_register_player">Profil</string>
+    <string name="title_register_game">Nouveau jeu</string>
+    <string name="discard_new_game">Supprimer le nouveau jeu ?</string>
 
-    <string name="title_register_table">Créer une table</string>
+    <string name="title_register_player">Nouveau joueur</string>
+    <string name="discard_new_player">Supprimer le nouveau joueur ?</string>
+
+    <string name="title_register_table">Nouvelle table</string>
+    <string name="discard_new_table">Supprimer la nouvelle table ?</string>
 
 </resources>

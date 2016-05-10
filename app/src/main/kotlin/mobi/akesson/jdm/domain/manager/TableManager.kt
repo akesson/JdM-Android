@@ -7,7 +7,10 @@ import mobi.akesson.jdm.domain.model.Table
 import org.jetbrains.anko.AnkoLogger
 import org.jetbrains.anko.debug
 
-class TableManager(val tableMapper: TableMapper = TableMapper(), val gameManager: GameManager = GameManager()) : BaseManager(), AnkoLogger {
+class TableManager(
+        val tableMapper: TableMapper = TableMapper(),
+        val gameManager: GameManager = GameManager()
+) : BaseManager(), AnkoLogger {
 
     fun create(table: Table): String {
         val tableData = tableMapper.toData(table)

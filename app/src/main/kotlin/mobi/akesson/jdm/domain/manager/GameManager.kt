@@ -10,7 +10,9 @@ import mobi.akesson.jdm.domain.model.Game
 import org.jetbrains.anko.AnkoLogger
 import org.jetbrains.anko.debug
 
-class GameManager(val gameMapper: GameMapper = GameMapper()) : BaseManager(), AnkoLogger {
+class GameManager(
+        val gameMapper: GameMapper = GameMapper()
+) : BaseManager(), AnkoLogger {
 
     fun create(game: Game): String {
         val gameData = gameMapper.toData(game)

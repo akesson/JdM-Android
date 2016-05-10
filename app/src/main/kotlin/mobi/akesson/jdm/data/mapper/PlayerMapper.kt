@@ -6,9 +6,9 @@ import mobi.akesson.jdm.domain.model.Table
 
 class PlayerMapper {
 
-    fun toData(player: Player): PlayerData {
-        return PlayerData(name = player.name, tables = player.tables.associate { it.id to true })
-    }
+    fun toData(player: Player): PlayerData = PlayerData(
+            name = player.name,
+            tables = player.tables.associate { it.id to true })
 
     fun toDataMap(player: Player): Map<String, Any> {
         val map: MutableMap<String, Any> = mutableMapOf()
@@ -17,7 +17,8 @@ class PlayerMapper {
         return map
     }
 
-    fun toDomain(id: String, playerData: PlayerData): Player {
-        return Player(id = id, name = playerData.name, tables = playerData.tables.map { Table(id = it.key) })
-    }
+    fun toDomain(id: String, playerData: PlayerData): Player = Player(
+            id = id,
+            name = playerData.name,
+            tables = playerData.tables.map { Table(id = it.key) })
 }

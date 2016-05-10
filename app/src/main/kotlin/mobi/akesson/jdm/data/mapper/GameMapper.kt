@@ -6,12 +6,11 @@ import mobi.akesson.jdm.domain.model.Table
 
 class GameMapper {
 
-    fun toData(game: Game): GameData {
-        return GameData(name = game.name,
-                minPlayers = game.minPlayers,
-                maxPlayers = game.maxPlayers,
-                tables = game.tables.associate { it.id to true })
-    }
+    fun toData(game: Game): GameData = GameData(
+            name = game.name,
+            minPlayers = game.minPlayers,
+            maxPlayers = game.maxPlayers,
+            tables = game.tables.associate { it.id to true })
 
     fun toDataMap(game: Game): Map<String, Any> {
         val map: MutableMap<String, Any> = mutableMapOf()
@@ -22,11 +21,10 @@ class GameMapper {
         return map
     }
 
-    fun toDomain(id: String, gameData: GameData): Game {
-        return Game(id = id,
-                name = gameData.name,
-                minPlayers = gameData.minPlayers,
-                maxPlayers = gameData.maxPlayers,
-                tables = gameData.tables.map { Table(id = it.key) })
-    }
+    fun toDomain(id: String, gameData: GameData): Game = Game(
+            id = id,
+            name = gameData.name,
+            minPlayers = gameData.minPlayers,
+            maxPlayers = gameData.maxPlayers,
+            tables = gameData.tables.map { Table(id = it.key) })
 }

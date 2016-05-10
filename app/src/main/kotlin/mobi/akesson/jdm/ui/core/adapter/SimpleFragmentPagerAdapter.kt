@@ -3,17 +3,11 @@ package mobi.akesson.jdm.ui.core.adapter
 import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentManager
 import android.support.v4.app.FragmentPagerAdapter
-import java.util.*
 
 class SimpleFragmentPagerAdapter(fm: FragmentManager) : FragmentPagerAdapter(fm) {
 
-    private val titles: ArrayList<String>
-    private val fragments: ArrayList<Fragment>
-
-    init {
-        titles = ArrayList<String>()
-        fragments = ArrayList<Fragment>()
-    }
+    private val titles: MutableList<String> = mutableListOf()
+    private val fragments: MutableList<Fragment> = mutableListOf()
 
     fun addItem(index: Int = -1, title: String = "", fragment: Fragment) {
         if (index == -1) {
@@ -25,15 +19,9 @@ class SimpleFragmentPagerAdapter(fm: FragmentManager) : FragmentPagerAdapter(fm)
         }
     }
 
-    override fun getItem(position: Int): Fragment {
-        return fragments[position]
-    }
+    override fun getItem(position: Int): Fragment = fragments[position]
 
-    override fun getCount(): Int {
-        return titles.size
-    }
+    override fun getCount(): Int = titles.size
 
-    override fun getPageTitle(position: Int): CharSequence {
-        return titles[position]
-    }
+    override fun getPageTitle(position: Int): CharSequence = titles[position]
 }
