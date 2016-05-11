@@ -13,7 +13,7 @@ import mobi.akesson.jdm.R
 import org.jetbrains.anko.*
 import org.jetbrains.anko.recyclerview.v7.recyclerView
 
-abstract class RecyclerFragment : Fragment() {
+open class RecyclerFragment : Fragment() {
 
     var viewAnimator: ViewAnimator? = null
     var recyclerView: RecyclerView? = null

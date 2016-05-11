@@ -6,7 +6,6 @@ import android.view.View
 import mobi.akesson.jdm.R
 import mobi.akesson.jdm.domain.model.Game
 import mobi.akesson.jdm.presenter.GamePresenter
-import mobi.akesson.jdm.ui.game.GameAdapter
 import mobi.akesson.jdm.ui.core.fragment.RecyclerFragment
 import mobi.akesson.jdm.ui.core.fragment.RecyclerFragmentUI
 import mobi.akesson.jdm.ui.core.view.GameView
