@@ -7,7 +7,7 @@ abstract class BasePresenter<M, V> {
     protected var model: M? = null
         set(value) {
             resetState()
-            this.model = model
+            field = value
             if (setupDone()) {
                 updateView()
             }

@@ -8,7 +8,7 @@ class TablePresenter : BasePresenter<MutableList<Table>, TableView>() {
     private var isLoadingData = false
 
     override fun updateView() {
-        if (model?.size === 0) {
+        if (model?.size == 0) {
             view()?.showEmpty()
         } else {
             view()?.showTables(model)

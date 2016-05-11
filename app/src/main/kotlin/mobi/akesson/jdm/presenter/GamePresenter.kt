@@ -1,9 +1,12 @@
 package mobi.akesson.jdm.presenter
 
+import mobi.akesson.jdm.domain.manager.GameManager
 import mobi.akesson.jdm.domain.model.Game
 import mobi.akesson.jdm.ui.core.view.GameView
 
-class GamePresenter : BasePresenter<MutableList<Game>, GameView>() {
+class GamePresenter(
+        val gameManager: GameManager = GameManager()
+) : BasePresenter<List<Game>, GameView>() {
 
     private var isLoadingData = false
 
@@ -11,7 +14,7 @@ class GamePresenter : BasePresenter<MutableList<Game>, GameView>() {
         if (model?.size == 0) {
             view()?.showEmpty()
         } else {
-            view()?.showGames(model)
+            view()?.showGames(model!!)
         }
     }
 
@@ -25,5 +28,9 @@ class GamePresenter : BasePresenter<MutableList<Game>, GameView>() {
 
     private fun loadData() {
         isLoadingData = true
+        gameManager.read { data ->
+            model = data
+            isLoadingData = false
+        }
     }
 }

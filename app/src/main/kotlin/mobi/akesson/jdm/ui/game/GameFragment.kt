@@ -6,6 +6,7 @@ import android.view.View
 import mobi.akesson.jdm.R
 import mobi.akesson.jdm.domain.model.Game
 import mobi.akesson.jdm.presenter.GamePresenter
+import mobi.akesson.jdm.ui.game.GameAdapter
 import mobi.akesson.jdm.ui.core.fragment.RecyclerFragment
 import mobi.akesson.jdm.ui.core.fragment.RecyclerFragmentUI
 import mobi.akesson.jdm.ui.core.view.GameView
@@ -14,12 +15,18 @@ import org.jetbrains.anko.textResource
 
 class GameFragment : RecyclerFragment(), GameView {
 
+    var adapter: GameAdapter? = null
     var presenter: GamePresenter? = null
 
     override fun onViewCreated(view: View?, savedInstanceState: Bundle?) {
+        adapter = GameAdapter()
+
         recyclerView?.setHasFixedSize(true)
         recyclerView?.layoutManager = LinearLayoutManager(ctx, LinearLayoutManager.VERTICAL, false)
+        recyclerView?.adapter = adapter
+
         emptyTextView?.textResource = R.string.games_empty
+
         presenter = GamePresenter()
     }
 
@@ -33,7 +40,8 @@ class GameFragment : RecyclerFragment(), GameView {
         presenter?.unbind()
     }
 
-    override fun showGames(games: List<Game>?) {
+    override fun showGames(games: List<Game>) {
+        adapter?.swapData(games)
         viewAnimator?.displayedChild = RecyclerFragmentUI.POSITION_LIST
     }
 

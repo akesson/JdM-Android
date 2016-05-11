@@ -4,7 +4,7 @@ import mobi.akesson.jdm.domain.model.Game
 
 interface GameView {
 
-    fun showGames(games: List<Game>?)
+    fun showGames(games: List<Game>)
 
     fun showLoading()
 
