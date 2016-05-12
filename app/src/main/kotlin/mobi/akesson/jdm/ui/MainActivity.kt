@@ -3,6 +3,8 @@ package mobi.akesson.jdm.ui
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import mobi.akesson.jdm.R
+import mobi.akesson.jdm.domain.manager.GameManager
+import mobi.akesson.jdm.domain.model.Game
 import mobi.akesson.jdm.extension.addOnPageChangeListener
 import mobi.akesson.jdm.extension.hide
 import mobi.akesson.jdm.ui.core.adapter.SimpleFragmentPagerAdapter
@@ -24,6 +26,8 @@ class MainActivity : AppCompatActivity() {
     val TABLE_INDEX = 0
     val GAME_INDEX = 1
     val PLAYER_INDEX = 2
+
+    var i: Int = 0 // TODO: Remove me!
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -50,10 +54,12 @@ class MainActivity : AppCompatActivity() {
         fab.onClick {
             when (viewPager.currentItem) {
                 TABLE_INDEX -> startActivity<RegisterTableActivity>()
-                GAME_INDEX -> startActivity<RegisterGameActivity>()
+                GAME_INDEX -> GameManager().create(Game(name = "Test Game ${i++}", minPlayers = 1 * i, maxPlayers = 2 * i)) // startActivity<RegisterGameActivity>()
                 PLAYER_INDEX -> startActivity<RegisterPlayerActivity>()
             }
         }
+
+        viewPager.currentItem = 1 // TODO: Remove me!
     }
 
     private fun onTablePageSelected() {

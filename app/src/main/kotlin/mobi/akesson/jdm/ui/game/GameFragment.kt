@@ -8,6 +8,7 @@ import mobi.akesson.jdm.domain.model.Game
 import mobi.akesson.jdm.presenter.GamePresenter
 import mobi.akesson.jdm.ui.core.fragment.RecyclerFragment
 import mobi.akesson.jdm.ui.core.fragment.RecyclerFragmentUI
+import mobi.akesson.jdm.ui.core.view.EventType
 import mobi.akesson.jdm.ui.core.view.GameView
 import org.jetbrains.anko.support.v4.ctx
 import org.jetbrains.anko.textResource
@@ -39,7 +40,7 @@ class GameFragment : RecyclerFragment(), GameView {
         presenter?.unbind()
     }
 
-    override fun showGames(games: List<Game>) {
+    override fun showList(games: MutableList<Game>?) {
         adapter?.swapData(games)
         viewAnimator?.displayedChild = RecyclerFragmentUI.POSITION_LIST
     }
@@ -50,5 +51,15 @@ class GameFragment : RecyclerFragment(), GameView {
 
     override fun showEmpty() {
         viewAnimator?.displayedChild = RecyclerFragmentUI.POSITION_EMPTY
+    }
+
+    override fun updateList(eventType: EventType, index: Int, oldIndex: Int) {
+        when (eventType) {
+            EventType.ADDED -> adapter?.notifyItemInserted(index);
+            EventType.CHANGED -> adapter?.notifyItemChanged(index);
+            EventType.REMOVED -> adapter?.notifyItemRemoved(index);
+            EventType.MOVED -> adapter?.notifyItemMoved(oldIndex, index);
+            else -> IllegalStateException("Unknown event type: $eventType")
+        }
     }
 }

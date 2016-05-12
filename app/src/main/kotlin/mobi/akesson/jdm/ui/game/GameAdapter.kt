@@ -22,9 +22,11 @@ class GameAdapter : RecyclerView.Adapter<GameViewHolder>() {
         holder?.bind(getItem(position))
     }
 
-    fun swapData(games: List<Game>) {
-        dataset = games.toMutableList()
-        notifyDataSetChanged()
+    fun swapData(games: MutableList<Game>?) {
+        if (games != null) {
+            dataset = games
+            notifyDataSetChanged()
+        }
     }
 
     fun getItem(position: Int): Game = dataset[position]
