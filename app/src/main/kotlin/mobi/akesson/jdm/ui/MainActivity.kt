@@ -54,6 +54,8 @@ class MainActivity : AppCompatActivity() {
                 PLAYER_INDEX -> startActivity<RegisterPlayerActivity>()
             }
         }
+
+        viewPager.currentItem = 1
     }
 
     private fun onTablePageSelected() {
