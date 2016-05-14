@@ -13,16 +13,16 @@ class GamePresenter(val gameManager: GameManager = GameManager()) : BasePresente
 
     override fun updateView() {
         if (model?.size == 0) {
-            view()?.showEmpty()
+            view?.showEmpty()
         } else {
-            view()?.showList(model)
+            view?.showList(model)
         }
     }
 
     override fun bind(view: GameView) {
         super.bind(view)
         if (model == null && !isLoadingData) {
-            view()?.showLoading()
+            view?.showLoading()
             loadData()
         }
     }
@@ -37,24 +37,28 @@ class GamePresenter(val gameManager: GameManager = GameManager()) : BasePresente
         listener = gameManager.addDataListener(
                 onDataAdded = { data, previousDataId ->
                     isLoadingData = false
-                    var index = 0
-                    if (previousDataId == null) {
-                        model = mutableListOf(data)
+                    if (data == null) {
+                        model = mutableListOf()
                     } else {
-                        index = getIndexForId(previousDataId) + 1;
-                        model?.add(index, data)
+                        var index = 0
+                        if (previousDataId == null) {
+                            model = mutableListOf(data)
+                        } else {
+                            index = getIndexForId(previousDataId) + 1;
+                            model?.add(index, data)
+                        }
+                        view?.updateList(EventType.ADDED, index)
                     }
-                    view()?.updateList(EventType.ADDED, index)
                 },
                 onDataChanged = { data, previousDataId ->
                     val index = getIndexForId(data.id);
                     model?.set(index, data)
-                    view()?.updateList(EventType.CHANGED, index)
+                    view?.updateList(EventType.CHANGED, index)
                 },
                 onDataRemoved = { data ->
                     val index = getIndexForId(data.id);
                     model?.removeAt(index)
-                    view()?.updateList(EventType.REMOVED, index)
+                    view?.updateList(EventType.REMOVED, index)
                     updateView()
                 },
                 onDataMoved = { data, previousDataId ->
@@ -62,7 +66,7 @@ class GamePresenter(val gameManager: GameManager = GameManager()) : BasePresente
                     model?.removeAt(oldIndex)
                     val newIndex = if (previousDataId == null) 0 else (getIndexForId(previousDataId) + 1);
                     model?.add(newIndex, data)
-                    view()?.updateList(EventType.MOVED, oldIndex, newIndex)
+                    view?.updateList(EventType.MOVED, oldIndex, newIndex)
                 }
         )
     }

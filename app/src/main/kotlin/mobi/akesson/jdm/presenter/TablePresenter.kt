@@ -9,16 +9,16 @@ class TablePresenter : BasePresenter<MutableList<Table>, TableView>() {
 
     override fun updateView() {
         if (model?.size == 0) {
-            view()?.showEmpty()
+            view?.showEmpty()
         } else {
-            view()?.showTables(model)
+            view?.showTables(model)
         }
     }
 
     override fun bind(view: TableView) {
         super.bind(view)
         if (model == null && !isLoadingData) {
-            view()?.showLoading()
+            view?.showLoading()
             loadData()
         }
     }
