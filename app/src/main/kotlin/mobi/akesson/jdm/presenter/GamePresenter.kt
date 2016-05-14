@@ -1,9 +1,9 @@
 package mobi.akesson.jdm.presenter
 
 import com.firebase.client.ChildEventListener
+import mobi.akesson.jdm.EventType
 import mobi.akesson.jdm.domain.manager.GameManager
 import mobi.akesson.jdm.domain.model.Game
-import mobi.akesson.jdm.ui.core.view.EventType
 import mobi.akesson.jdm.ui.core.view.GameView
 
 class GamePresenter(val gameManager: GameManager = GameManager()) : BasePresenter<MutableList<Game>, GameView>() {
@@ -22,7 +22,7 @@ class GamePresenter(val gameManager: GameManager = GameManager()) : BasePresente
     override fun bind(view: GameView) {
         super.bind(view)
         if (model == null && !isLoadingData) {
-            view?.showLoading()
+            view.showLoading()
             loadData()
         }
     }

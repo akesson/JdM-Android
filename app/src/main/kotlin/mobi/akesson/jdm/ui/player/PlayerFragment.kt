@@ -6,8 +6,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import mobi.akesson.jdm.R
-import mobi.akesson.jdm.domain.manager.PlayerManager
-import mobi.akesson.jdm.domain.model.Player
 import org.jetbrains.anko.*
 import org.jetbrains.anko.support.v4.nestedScrollView
 

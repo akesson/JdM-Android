@@ -14,34 +14,35 @@ import org.jetbrains.anko.textResource
 
 class TableFragment : RecyclerFragment(), TableView {
 
-    var presenter: TablePresenter? = null
+    lateinit var presenter: TablePresenter
 
     override fun onViewCreated(view: View?, savedInstanceState: Bundle?) {
-        recyclerView?.setHasFixedSize(true)
-        recyclerView?.layoutManager = LinearLayoutManager(ctx, LinearLayoutManager.VERTICAL, false)
-        emptyTextView?.textResource = R.string.tables_empty
+        recyclerView.setHasFixedSize(true)
+        recyclerView.layoutManager = LinearLayoutManager(ctx, LinearLayoutManager.VERTICAL, false)
+        emptyTextView.textResource = R.string.tables_empty
+
         presenter = TablePresenter()
     }
 
     override fun onResume() {
         super.onResume()
-        presenter?.bind(this)
+        presenter.bind(this)
     }
 
     override fun onPause() {
         super.onPause()
-        presenter?.unbind()
+        presenter.unbind()
     }
 
     override fun showTables(tables: List<Table>?) {
-        viewAnimator?.displayedChild = RecyclerFragmentUI.POSITION_LIST
+        viewAnimator.displayedChild = RecyclerFragmentUI.POSITION_LIST
     }
 
     override fun showLoading() {
-        viewAnimator?.displayedChild = RecyclerFragmentUI.POSITION_LOADING
+        viewAnimator.displayedChild = RecyclerFragmentUI.POSITION_LOADING
     }
 
     override fun showEmpty() {
-        viewAnimator?.displayedChild = RecyclerFragmentUI.POSITION_EMPTY
+        viewAnimator.displayedChild = RecyclerFragmentUI.POSITION_EMPTY
     }
 }

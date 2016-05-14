@@ -1,6 +1,7 @@
 package mobi.akesson.jdm.ui.core.view
 
 import mobi.akesson.jdm.domain.model.Game
+import mobi.akesson.jdm.EventType
 
 interface GameView {
 
@@ -11,8 +12,4 @@ interface GameView {
     fun showEmpty()
 
     fun updateList(eventType: EventType, index: Int, oldIndex: Int = -1)
-}
-
-enum class EventType {
-    ADDED, CHANGED, REMOVED, MOVED
 }

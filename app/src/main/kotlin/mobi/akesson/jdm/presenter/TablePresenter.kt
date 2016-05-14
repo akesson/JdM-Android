@@ -18,7 +18,7 @@ class TablePresenter : BasePresenter<MutableList<Table>, TableView>() {
     override fun bind(view: TableView) {
         super.bind(view)
         if (model == null && !isLoadingData) {
-            view?.showLoading()
+            view.showLoading()
             loadData()
         }
     }

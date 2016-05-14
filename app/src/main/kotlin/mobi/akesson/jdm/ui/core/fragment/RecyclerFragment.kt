@@ -15,23 +15,20 @@ import org.jetbrains.anko.recyclerview.v7.recyclerView
 
 open class RecyclerFragment : Fragment() {
 
-    var viewAnimator: ViewAnimator? = null
-    var recyclerView: RecyclerView? = null
-    var emptyTextView: TextView? = null
-    var loadingTextView: TextView? = null
+    lateinit var viewAnimator: ViewAnimator
+    val recyclerView: RecyclerView by lazy { viewAnimator.getChildAt(RecyclerFragmentUI.POSITION_LIST) as RecyclerView }
+    val emptyTextView: TextView by lazy { viewAnimator.getChildAt(RecyclerFragmentUI.POSITION_EMPTY) as TextView }
+    val loadingTextView: TextView  by lazy { viewAnimator.getChildAt(RecyclerFragmentUI.POSITION_LOADING) as TextView }
 
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         viewAnimator = RecyclerFragmentUI().createView(AnkoContext.create(context, this))
-        recyclerView = viewAnimator?.getChildAt(RecyclerFragmentUI.POSITION_LIST) as RecyclerView;
-        loadingTextView = viewAnimator?.getChildAt(RecyclerFragmentUI.POSITION_LOADING) as TextView;
-        emptyTextView = viewAnimator?.getChildAt(RecyclerFragmentUI.POSITION_EMPTY) as TextView;
         return viewAnimator
     }
 }
 
 class RecyclerFragmentUI : AnkoComponent<RecyclerFragment> {
 
-    companion object{
+    companion object {
         val POSITION_LIST = 0
         val POSITION_LOADING = 1
         val POSITION_EMPTY = 2
